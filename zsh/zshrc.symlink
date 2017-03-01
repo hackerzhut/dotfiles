@@ -1,0 +1,122 @@
+# shortcut to this dotfiles path is $ZSH
+export ZSH=$HOME/.dotfiles
+
+# your project folder that we can `c [tab]` to
+export PROJECTS=~/Code
+
+# use .localrc for SUPER SECRET CRAP that you don't
+# want in your public, versioned repo.
+if [[ -a ~/.localrc ]]
+then
+  source ~/.localrc
+fi
+
+# all of our zsh files
+typeset -U config_files
+config_files=($ZSH/**/*.zsh)
+
+# load the path files
+for file in ${(M)config_files:#*/path.zsh}
+do
+  source $file
+done
+
+# load everything but the path and completion files
+for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
+do
+  source $file
+done
+
+# initialize autocomplete here, otherwise functions won't be loaded
+autoload -U compinit
+compinit
+
+# load every completion after autocomplete loads
+for file in ${(M)config_files:#*/completion.zsh}
+do
+  source $file
+done
+
+unset config_files
+
+# check for custom bin directory and add to path
+if [[ -d ~/.dotfiles/bin ]]; then
+    export PATH=~/.dotfiles/bin:$PATH
+fi
+
+[ -z "$TMUX" ] && export TERM=xterm-256color
+
+#Sublime text
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+
+# code () {
+#   VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*
+# }
+
+pgr(){
+  for x in rails zeus; do
+    pgrep -fl $x;
+  done
+}
+
+pgk(){
+  for x in rails zeus; do
+    pkill -fl $x;
+  done
+}
+
+# JAVA HOME for Amazon EC2 CLI Tools
+# export JAVA_HOME=$(/usr/libexec/java_home)
+
+# export AWS_RDS_HOME=~/RDSCli
+# export PATH=$PATH:$AWS_RDS_HOME/bin
+
+# export AWS_ELASTICACHE_HOME=~/AmazonElastiCacheCli
+# export PATH=$PATH:$AWS_ELASTICACHE_HOME/bin
+
+# Override XCode git with homebrew
+export PATH="/usr/local/bin:$PATH"
+
+#export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_60.jdk/Contents/Home"
+#export MAVEN_OPTS="-Xmx1248M -Xss512M -XX:MaxPermSize=2048M"
+
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
+# Kill all running containers.
+# alias dockerkill='docker kill $(docker ps -q)'
+
+# Delete all docker images and containers.
+# alias dockernuke='docker rm $(docker ps -a -q) && docker rmi $(docker images -q)'
+
+# Base16 Shell
+# if [ -z "$THEME" ]; then
+    export THEME="base16-atelierheath"
+# fi
+if [ -z "$BACKGROUND" ]; then
+    export BACKGROUND="dark"
+fi
+
+BASE16_SHELL="$ZSH/.config/base16-shell/$THEME.$BACKGROUND.sh"
+# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+source $BASE16_SHELL
+
+ulimit -n 65536 65536
+
+# Docker Config
+# eval $(docker-machine env default)
+# eval "$(docker-machine env dev)"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+if [ -e /Users/sara/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/sara/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+alias mysql=/usr/local/mysql/bin/mysql
+alias mysqladmin=/usr/local/mysql/bin/mysqladmin
+
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+export PATH="$HOME/.yarn/bin:$PATH"
+
+export GOROOT_LOCAL="/usr/local/go/bin"
+export GOPATH="/Users/sara/codebase/tabcorp/go"
+export PATH="$GOPATH/bin:$PATH"

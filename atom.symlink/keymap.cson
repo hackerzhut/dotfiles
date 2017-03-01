@@ -1,0 +1,5 @@
+'atom-text-editor':
+  'cmd-alt-l': 'editor:auto-indent'
+
+'.editor':
+  'cmd-shift-b': 'atom-beautify:beautify-editor'

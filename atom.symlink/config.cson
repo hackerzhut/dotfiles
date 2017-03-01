@@ -1,0 +1,51 @@
+"*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "fb3ded7c-b255-4d5b-ad19-f9944e3f3a45"
+  core:
+    disabledPackages: [
+      "background-tips"
+      "exception-reporting"
+      "metrics"
+      "linter-coffeelint"
+      "go-debug"
+      "go-signature-statusbar"
+    ]
+    hideGitIgnoredFiles: true
+    ignoredNames: [
+      ".bundle"
+      ".git"
+      "log"
+      "repositories"
+      "tmp"
+      "vendor"
+    ]
+    telemetryConsent: "no"
+  editor:
+    backUpBeforeSaving: true
+    fontFamily: "OperatorMono-Light"
+    fontSize: 16
+    invisibles: {}
+    showIndentGuide: true
+    softWrapAtPreferredLineLength: true
+  "go-plus":
+    disabledBundledPackages: [
+      "go-signature-statusbar"
+    ]
+  linter:
+    errorPanelHeight: 24
+  minimap:
+    plugins:
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
+  "release-notes":
+    viewedVersion: "0.89.0"
+  "spell-check":
+    grammars: [
+      "text.plain"
+      "source.gfm"
+      "text.git-commit"
+    ]
+  "tree-view": {}
+  welcome:
+    showOnStartup: false
