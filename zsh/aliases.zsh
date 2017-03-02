@@ -166,3 +166,10 @@ alias iapps='lsof -P -i -n | cut -f 1 -d " "| uniq | tail -n +2'
 
 # All ports with PIDs
 alias ports="lsof -Pan -i tcp -i udp"
+
+# Tmux Shortcuts
+# alias mux='TERM=xterm-256color mux'
+alias mux="tmuxinator $1"
+alias tml="tmux list-sessions"
+alias tma="tmux -2 attach -t $1"
+alias tmk="tmux kill-session -t $1"
