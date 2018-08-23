@@ -49,9 +49,9 @@ fi
 #Sublime text
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
-# code () {
-#   VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*
-# }
+code () {
+   VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*
+}
 
 pgr(){
   for x in rails zeus; do
@@ -101,7 +101,7 @@ BASE16_SHELL="$ZSH/.config/base16-shell/$THEME.$BACKGROUND.sh"
 # [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 source $BASE16_SHELL
 
-ulimit -n 65536 65536
+# ulimit -n 65536 65536
 
 # Docker Config
 # eval $(docker-machine env default)
@@ -118,5 +118,11 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PATH="$HOME/.yarn/bin:$PATH"
 
 export GOROOT_LOCAL="/usr/local/go/bin"
-export GOPATH="/Users/sara/codebase/tabcorp/go"
+# export GOROOT="/usr/local/opt/go/libexec"
+export GOPATH="/Users/palaniammals/codebase/tabcorp/go"
 export PATH="$GOPATH/bin:$PATH"
+# export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+export PATH="~/.pyenv/bin:$PATH"

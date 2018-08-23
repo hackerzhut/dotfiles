@@ -24,7 +24,7 @@
   editor:
     backUpBeforeSaving: true
     fontFamily: "OperatorMono-Light"
-    fontSize: 16
+    fontSize: 19
     invisibles: {}
     showIndentGuide: true
     softWrapAtPreferredLineLength: true

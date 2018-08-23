@@ -187,3 +187,6 @@ set completeopt-=preview
 
 " Disable swap files
 set noswapfile
+
+" Paste toggle
+set pastetoggle=<leader>p
